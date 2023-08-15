@@ -11,4 +11,5 @@ class MainController extends Controller
     {
         echo 'Start page';
     }
+
 }

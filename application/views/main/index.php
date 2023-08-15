@@ -1,0 +1,3 @@
+<p>
+    Main page
+</p>
