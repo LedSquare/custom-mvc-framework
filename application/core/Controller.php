@@ -5,9 +5,11 @@ namespace application\core;
 
 abstract class Controller 
 {
-    public function __construct()
+    public $route;
+
+    public function __construct($route)
     {
-        echo 'abstract Controller run !';
+        $this->route = $route;
     }
 }
     

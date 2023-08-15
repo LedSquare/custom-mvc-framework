@@ -1,6 +1,7 @@
 <?php
 
 namespace application\controllers;
+
 use application\core\Controller;
 
 class AccountController extends Controller
@@ -13,7 +14,8 @@ class AccountController extends Controller
 
     public function registerAction()
     {
-        echo 'Register page';
+        echo 'Register page<br>';
+        // var_dump($this->route);
     }
 
 }

@@ -42,19 +42,19 @@ class Router
      * 
      */
 
-    public function run()   
+    public function run():void
     {
         if($this->match()){
             $path = 'application\controllers\\' . ucfirst($this->params['controller']) . 'Controller'; //
             if(class_exists($path)){
                 $action = $this->params['action'] . 'Action';
                 if (method_exists($path, $action)){
-                    $controller = new $path;
+                    $controller = new $path($this->params);
                     $controller->$action();
                 } else { 
-                    echo 'Action not found... :(' . $action;
+                    echo 'Action not found... :( - ' . $action;
                 }
-            } else {
+        } else {
                 echo '<br> No such controller found - ' . $path . '.<br>' . ' Doki pochitai huli, mojet pomojet';
             }
 
