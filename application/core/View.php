@@ -6,18 +6,22 @@ namespace application\core;
 
 class View
 {   
-    /**
-     *@var route Path to controller
-     */
     public $route;
+    /**
+     *@var path Path to controller
+     */
+    public $path;
     /**
      * @var layout default layout
      */
     public $layout = 'default';
     
-    public function __construct()
+    
+    public function __construct($route)
     {
-        echo 'View object ';
+        $this->route = $route;
+        
+        debug($this->route);
     }
 
     public function index()

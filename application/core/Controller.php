@@ -12,7 +12,7 @@ abstract class Controller
     public function __construct($route)
     {
         $this->route = $route;
-        $this->view = new View;
+        $this->view = new View($route);
     }
 }
     
