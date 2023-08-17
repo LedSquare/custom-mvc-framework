@@ -28,8 +28,10 @@ class View
      * ob_start() - function turn buffering on
      * ob_get_clean() - function gets current buffer contents and delete current output
      */
-    public function render($title, $vars = []):void
-    {
+    public function render($title, $parameters = []):void
+    {   
+        extract($parameters);
+
         if (file_exists('application/views/' . $this->path . '.php')) {
             ob_start();
             require 'application/views/' . $this->path . '.php';
@@ -38,6 +40,14 @@ class View
         } else {
             echo 'View not found';
         }
+    }
+
+    /**
+     * Return error code status
+     */
+    public static function errorCode($code):void
+    {
+        http_response_code($code);
     }
 
 }
