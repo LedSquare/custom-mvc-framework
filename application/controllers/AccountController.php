@@ -9,13 +9,12 @@ class AccountController extends Controller
     
     public function loginAction(): void
     {
-        echo 'Login page';
+        $this->view->render('Login page');
     }
 
     public function registerAction(): void
     {
-        echo 'Register page<br>';
-        // var_dump($this->route);
+        $this->view->render('Register page');
     }
 
 }
