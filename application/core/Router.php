@@ -6,7 +6,7 @@ use application\core\View;
 
 class Router 
 {
-    protected $routes = [];
+    public $routes = [];
 
     protected $params = [];
 
@@ -17,6 +17,7 @@ class Router
         foreach ($arr as $key => $value) {
             $this->add($key, $value); // added params in val $routes;
         }
+        
     }
 
     public function add($route, $params)   

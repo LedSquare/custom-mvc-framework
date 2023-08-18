@@ -2,7 +2,7 @@
 
 namespace application\lib;
 
-class Db 
+class DB 
 {
     public function __construct()
     {
