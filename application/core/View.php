@@ -32,14 +32,14 @@ class View
     {   
         extract($parameters);
 
-        if (file_exists('application/views/' . $this->path . '.php')) {
+        $pathView = 'application/views/' . $this->path . '.php';
+
+        if (file_exists($pathView)) {
             ob_start();
-            require 'application/views/' . $this->path . '.php';
+            require $pathView;
             $content = ob_get_clean();
             require 'application/views/layouts/' . $this->layout . '.php';
-        } else {
-            echo 'View not found';
-        }
+        } 
     }
 
     public function redirect($url):void
@@ -53,8 +53,11 @@ class View
      */
     public static function errorCode($code):void
     {
+        $pathViewError = 'application/views/errors/' . $code . '.php';
         http_response_code($code);
-        require 'application/views/errors/' . $code . '.php';
+        if (file_exists($pathViewError)){
+            require $pathViewError;  
+        }
         exit;
     }
 
