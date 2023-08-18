@@ -42,12 +42,21 @@ class View
         }
     }
 
+    public function redirect($url):void
+    {
+        header('location:' . $url);
+        exit;
+    }
+
     /**
      * Return error code status
      */
     public static function errorCode($code):void
     {
         http_response_code($code);
+        require 'application/views/errors/' . $code . '.php';
+        exit;
     }
+
 
 }
