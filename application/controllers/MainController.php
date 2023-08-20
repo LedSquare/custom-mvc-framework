@@ -15,10 +15,16 @@ class MainController extends Controller
             'age' => '25',
 
         ];
-        
         $db = new Db;
-        $res = $db->column('SELECT name FROM users WHERE id=1');
-        echo $res;
+
+        $params = [
+            'id' => 1,
+        ];
+
+        $res = $db->column('SELECT name FROM users WHERE id = :id', $params);
+
+        debug($res);
+
         $this->view->render('Главная страница', $vars);
     }
 

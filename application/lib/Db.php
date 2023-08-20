@@ -6,7 +6,7 @@ use PDO;
 
 class Db
 {
-    protected $db;
+    protected PDO $db;
 
     public function __construct()
     {
@@ -19,23 +19,29 @@ class Db
         );
     }
 
-    public function query($sql): mixed
+    public function query($sql, $params = []): mixed
     {
-        $query = $this->db->query($sql);
+        $stmt = $this->db->prepare($sql);
+        if (!empty($stmt)){
+            foreach ($params as $key => $val) {
+                $stmt->bindValue(':' . $key, $val);
+            }
+        }
+        $stmt->execute();
 
-        // debug($query->fetchColumn());
-        return $query;
+        return $stmt;
+
     }
 
-    public function row($sql): mixed 
+    public function row($sql, $params = []): mixed 
     {
-        $result = $this->query($sql);
+        $result = $this->query($sql, $params);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function column($sql): mixed
+    public function column($sql, $params = []): mixed
     {
-        $result = $this->query($sql);
+        $result = $this->query($sql, $params);
         return $result->fetchColumn();
     }
 }
