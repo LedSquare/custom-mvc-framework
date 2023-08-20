@@ -12,3 +12,9 @@ function debug($str)
     echo '</pre>';
     exit;
 }
+
+
+function variableName(array $vars) {
+    extract($vars);
+    return $vars;
+}

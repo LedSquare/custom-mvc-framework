@@ -1,3 +1,3 @@
 Educational project
 
-5 part 9:00 
+7 part 

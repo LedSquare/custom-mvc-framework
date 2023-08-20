@@ -18,4 +18,9 @@ return [
         'action' => 'register',
     ],
 
+    'news' => [
+        'controller' => 'news',
+        'action' => 'index',
+    ],
+
 ];
