@@ -3,18 +3,17 @@
 namespace application\core;
 
 
-
+/**
+ * @var path Path to controller
+ * @var layout Just default layout name 
+ */
 class View
 {   
-    public $route;
-    /**
-     *@var path Path to controller url
-     */
-    public $path;
-    /**
-     * @var layout default layout
-     */
-    public $layout = 'default';
+    public array $route;
+
+    public string $path;
+
+    public string $layout = 'default';
     
     
     public function __construct($route)

@@ -6,9 +6,9 @@ use application\core\View;
 
 class Router 
 {
-    public $routes = [];
+    protected array $routes;
 
-    protected $params = [];
+    protected array $params;
 
     
     public function __construct()
@@ -39,7 +39,6 @@ class Router
     }
 
     /** 
-     * @var match - Checks if the route exists
      * @var path - Gets the name of the controller from the route parameters
      * The next step is to check if the controller exists.
      * 

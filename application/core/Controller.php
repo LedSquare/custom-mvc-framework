@@ -6,8 +6,8 @@ use application\core\View;
 
 abstract class Controller 
 {
-    public $route;
-    public $view;
+    public array $route;
+    public View $view;
 
     public function __construct($route)
     {
