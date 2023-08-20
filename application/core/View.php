@@ -28,7 +28,7 @@ class View
      * ob_start() - function turn buffering on
      * ob_get_clean() - function gets current buffer contents and delete current output
      */
-    public function render($title, $parameters = []):void
+    public function render(string $title, $parameters = []):void
     {   
         extract($parameters);
 

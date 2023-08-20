@@ -22,13 +22,15 @@ class Db
     public function query($sql): mixed
     {
         $query = $this->db->query($sql);
+
+        // debug($query->fetchColumn());
         return $query;
     }
 
     public function row($sql): mixed 
     {
         $result = $this->query($sql);
-        return $result->fetchAll();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function column($sql): mixed

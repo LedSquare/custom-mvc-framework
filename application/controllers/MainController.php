@@ -17,7 +17,8 @@ class MainController extends Controller
         ];
 
         $db = new Db;
-        $db->query('SELECT * FROM users WHERE id=1');
+        $res = $db->column('SELECT name FROM users WHERE id=1');
+        echo $res;
         $this->view->render('Главная страница', $vars);
     }
 
