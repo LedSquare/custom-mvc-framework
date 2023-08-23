@@ -17,12 +17,17 @@ abstract class Controller
         $this->model = $this->loadModel($route['controller']);
     }
 
-    public function loadModel($name)
+    public function loadModel($name): Model
     {
         $path = 'application\models\\' . ucfirst($name); 
         if (class_exists($path)) {
             return new $path;
         }
+    }
+
+    public function checkAcl(): void 
+    {
+
     }
 }
     

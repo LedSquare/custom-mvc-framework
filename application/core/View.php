@@ -60,5 +60,13 @@ class View
         exit;
     }
 
+    public function message($status, $message):void
+    {
+        exit(json_encode(['status' => $status, 'message' => $message]));
+    }
 
+    public function locationJS($url): void 
+    {
+        exit(json_encode(['url' => $url]));
+    }
 }

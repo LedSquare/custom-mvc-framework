@@ -7,5 +7,8 @@
 </head>
 <body>
     <?php echo $content; ?>
+
+    <script src="/public/scripts/jquery.js"></script>
+    <script src="/public/scripts/ajaxForm.js"></script>
 </body>
 </html>
