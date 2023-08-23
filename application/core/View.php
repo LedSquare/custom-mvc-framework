@@ -50,7 +50,7 @@ class View
     /**
      * Return error code status
      */
-    public static function errorCode($code):void
+    public static function errorCode($code): void
     {
         $pathViewError = 'application/views/errors/' . $code . '.php';
         http_response_code($code);
