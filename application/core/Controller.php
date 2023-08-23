@@ -8,7 +8,7 @@ abstract class Controller
 {
     public array $route;
     public View $view;
-    public $model;
+    public ?Model $model = null;
 
     public function __construct($route)
     {
@@ -17,17 +17,17 @@ abstract class Controller
         $this->model = $this->loadModel($route['controller']);
     }
 
-    public function loadModel($name): Model
+    public function loadModel($name): ?Model
     {
         $path = 'application\models\\' . ucfirst($name); 
         if (class_exists($path)) {
             return new $path;
-        }
+        } else return $this->model;
     }
 
     public function checkAcl(): void 
     {
-
+        
     }
 }
     
