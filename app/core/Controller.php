@@ -19,10 +19,10 @@ abstract class Controller
     public function __construct($route)
     {
         $this->route = $route;
-        $acl = new ACL($route);
-        if (!$acl->checkAcl()){
-            View::errorCode(403);
-        }
+        // $acl = new ACL($route);
+        // if (!$acl->checkAcl()){
+        //     View::errorCode(403);
+        // }
 
         $application = new Application(
             handler: new BusinessLogic(),

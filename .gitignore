@@ -1,2 +1,3 @@
 /docker/volume/mysql/
 .env
+vendor/
