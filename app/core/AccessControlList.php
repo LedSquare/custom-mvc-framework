@@ -10,7 +10,7 @@ class AccessControlList
     public function __construct($route)
     {   
         $this->route = $route;
-        $this->config = require 'application/acl/' . $this->route['controller'] . '.php';
+        $this->config = require 'app/acl/' . $this->route['controller'] . '.php';
     }
 
     public function checkAcl(): bool

@@ -31,13 +31,13 @@ class View
     {   
         extract($parameters);
 
-        $pathView = 'application/views/' . $this->path . '.php';
+        $pathView = 'app/views/' . $this->path . '.php';
 
         if (file_exists($pathView)) {
             ob_start();
             require $pathView;
             $content = ob_get_clean();
-            require 'application/views/layouts/' . $this->layout . '.php';
+            require 'app/views/layouts/' . $this->layout . '.php';
         } 
     }
 
@@ -52,7 +52,7 @@ class View
      */
     public static function errorCode($code): void
     {
-        $pathViewError = 'application/views/errors/' . $code . '.php';
+        $pathViewError = 'app/views/errors/' . $code . '.php';
         http_response_code($code);
         if (file_exists($pathViewError)){
             require $pathViewError;  

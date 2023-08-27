@@ -2,7 +2,6 @@
 
 namespace App\Core\Middleware;
 
-
 final class Application 
 {
 
@@ -15,4 +14,6 @@ final class Application
     {
         return $this->handler->handle($request);
     }
+
+    
 }

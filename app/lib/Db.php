@@ -10,7 +10,7 @@ class Db
 
     public function __construct()
     {
-        $config = require 'application/config/db.php';
+        $config = require 'app/config/db.php';
         $this->db = new PDO(
             'mysql:host=' . $config['host'] .
             ';dbname=' . $config['name'],
