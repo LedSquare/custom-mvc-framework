@@ -1,7 +1,11 @@
 <?php
 
-namespace app\core\middleware;
+namespace App\Core\Middleware\Src;
 
+use app\core\middleware\src\Request;
+use app\core\middleware\src\Response;
+use app\core\middleware\src\Handler;
+use app\core\middleware\src\Status;
 
 final class BusinessLogic implements Handler 
 {

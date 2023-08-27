@@ -2,7 +2,11 @@
 
 namespace App\Core;
 
+
 use app\core\View;
+use app\core\middleware\src\Request;
+use app\core\middleware\src\Application;
+use app\core\middleware\src\BusinessLogic;
 use app\core\AccessControlList as ACL;
 
 abstract class Controller 
@@ -19,6 +23,14 @@ abstract class Controller
         if (!$acl->checkAcl()){
             View::errorCode(403);
         }
+
+        $application = new Application(
+            handler: new BusinessLogic(),
+        );
+        
+        $request = new Request(uniqid());
+        $response = $application->handle($request);
+ 
         $this->view = new View($route);
         $this->model = $this->loadModel($route['controller']);
     }

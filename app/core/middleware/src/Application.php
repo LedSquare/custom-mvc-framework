@@ -1,6 +1,10 @@
 <?php
 
-namespace App\Core\Middleware;
+namespace App\Core\Middleware\Src;
+
+use app\core\middleware\src\Request;
+use app\core\middleware\src\Response;
+use app\core\middleware\src\Handler;
 
 final class Application 
 {
