@@ -2,10 +2,7 @@
 
 namespace App\Core\Middleware\Src;
 
-use app\core\middleware\src\Request;
-use app\core\middleware\src\Response;
-use app\core\middleware\src\Handler;
-use app\core\middleware\src\Status;
+use app\core\middleware\src\{Request, Response, Handler, Status};
 
 final class BusinessLogic implements Handler 
 {

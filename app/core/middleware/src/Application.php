@@ -2,9 +2,7 @@
 
 namespace App\Core\Middleware\Src;
 
-use app\core\middleware\src\Request;
-use app\core\middleware\src\Response;
-use app\core\middleware\src\Handler;
+use app\core\middleware\src\{Request, Response, Handler};
 
 final class Application 
 {

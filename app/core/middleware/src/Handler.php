@@ -2,8 +2,7 @@
 
 namespace App\Core\Middleware\Src;
 
-use app\core\middleware\src\Response;
-use app\core\middleware\src\Request;
+use app\core\middleware\src\{Response, Request};
 
 interface Handler 
 {
