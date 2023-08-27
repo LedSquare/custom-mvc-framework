@@ -2,8 +2,7 @@
 
 namespace Application\Core\Middleware;
 
-use Application\Core\Middleware\Handler;
-use Application\Core\Middleware\Response;
+
 
 final class Application 
 {
