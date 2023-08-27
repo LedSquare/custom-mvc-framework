@@ -1,8 +1,8 @@
 <?php
 
-namespace Application\Core\Middleware;
+namespace App\Core\Middleware;
 
-use Application\Core\Middleware\Response;
+use App\Core\Middleware\Response;
 
 interface Handler 
 {

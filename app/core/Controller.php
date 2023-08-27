@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\Core;
+namespace App\Core;
 
-use Application\Core\View;
-use Application\Core\AccessControlList as ACL;
+use App\Core\View;
+use App\Core\AccessControlList as ACL;
 
 abstract class Controller 
 {
@@ -25,7 +25,7 @@ abstract class Controller
 
     public function loadModel($name): ?object
     {
-        $path = 'application\models\\' . ucfirst($name); 
+        $path = 'App\models\\' . ucfirst($name); 
         if (class_exists($path)) {
             return new $path;
         } else return $this->model;

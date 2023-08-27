@@ -1,8 +1,8 @@
 <?php
 
-namespace Application\Core;
+namespace App\Core;
 
-use Application\Core\View;
+use App\Core\View;
 
 class Router 
 {
@@ -47,7 +47,7 @@ class Router
     public function run():void
     {
         if($this->match()){
-            $path = 'application\controllers\\' . ucfirst($this->params['controller']) . 'Controller'; //
+            $path = 'App\controllers\\' . ucfirst($this->params['controller']) . 'Controller'; //
             if(class_exists($path)){
                 $action = $this->params['action'] . 'Action';
                 if (method_exists($path, $action)){
