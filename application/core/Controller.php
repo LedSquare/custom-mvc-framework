@@ -1,9 +1,9 @@
 <?php
 
-namespace application\core;
+namespace Application\Core;
 
-use application\core\View;
-use application\core\AccessControlList as ACL;
+use Application\Core\View;
+use Application\Core\AccessControlList as ACL;
 
 abstract class Controller 
 {

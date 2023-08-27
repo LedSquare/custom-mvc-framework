@@ -1,8 +1,8 @@
 <?php
 
-namespace application\core;
+namespace Application\Core;
 
-use application\core\View;
+use Application\Core\View;
 
 class Router 
 {
