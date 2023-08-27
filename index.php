@@ -1,8 +1,8 @@
 <?php
 
-require 'application/lib/Dev.php';
+require 'app/lib/Dev.php';
 
-use App\core\Router;
+use app\core\Router;
 
 spl_autoload_register(function($class){
    $path = str_replace('\\', '/', $class . '.php');
