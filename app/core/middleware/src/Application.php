@@ -15,5 +15,4 @@ final class Application
         return $this->handler->handle($request);
     }
 
-    
 }

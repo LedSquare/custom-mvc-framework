@@ -2,8 +2,8 @@
 
 namespace App\Core;
 
-use App\Core\View;
-use App\Core\AccessControlList as ACL;
+use app\core\View;
+use app\core\AccessControlList as ACL;
 
 abstract class Controller 
 {

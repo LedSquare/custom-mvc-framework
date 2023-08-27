@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Middleware;
+namespace app\core\middleware;
 
 enum Status
 {

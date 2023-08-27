@@ -1,8 +1,8 @@
 <?php 
 
-namespace App\Core\Middleware;
+namespace app\core\middleware;
 
-use App\Core\Middleware\Status;
+use app\core\middleware\Status;
 
 /**
  * @psalm-immutable

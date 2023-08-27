@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-use App\Core\View;
+use app\core\View;
 
 class Router 
 {
