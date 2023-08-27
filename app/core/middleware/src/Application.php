@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\Core\Middleware;
+namespace App\Core\Middleware;
 
-use Application\Core\Middleware\Handler;
-use Application\Core\Middleware\Response;
+use App\Core\Middleware\Handler;
+use App\Core\Middleware\Response;
 
 final class Application 
 {

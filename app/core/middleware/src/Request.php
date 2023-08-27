@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Core\Middleware;
+namespace App\Core\Middleware;
 
 /**
  * @psalm-immutable
