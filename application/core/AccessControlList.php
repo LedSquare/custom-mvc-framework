@@ -29,6 +29,10 @@ class AccessControlList
 
     }
 
+    public function checkRole (): void 
+    {
+        
+    }
 
     protected function isAcl($key): bool
     {
