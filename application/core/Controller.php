@@ -15,7 +15,7 @@ abstract class Controller
     public function __construct($route)
     {
         $this->route = $route;
-        $acl = new ACL($this->route);
+        $acl = new ACL($route);
         if (!$acl->checkAcl()){
             View::errorCode(403);
         }
