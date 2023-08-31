@@ -3,7 +3,7 @@
 namespace App\Core\Middleware\Src;
 
 use app\core\middleware\src\{Middleware, Request, Response};
-use Psr\Log\LoggerInterface;
+use vendor\psr\log\src\LoggerInterface;
 
 final class Logging implements Middleware
 {

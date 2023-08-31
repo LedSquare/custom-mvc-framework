@@ -4,11 +4,10 @@ namespace App\Core;
 
 
 use app\core\View;
-use app\core\middleware\src\Request;
-use app\core\middleware\src\Application;
-use app\core\middleware\src\BusinessLogic;
+use app\core\middleware\src\{Request, Application, BusinessLogic, Logging};
 use app\core\AccessControlList as ACL;
-use Monolog\Logger;
+use vendor\monolog\monolog\src\Monolog\Handler\StreamHandler;
+use vendor\monolog\monolog\src\Monolog\Logger;
 
 abstract class Controller 
 {
@@ -24,16 +23,18 @@ abstract class Controller
         // if (!$acl->checkAcl()){
         //     View::errorCode(403);
         // }
-
+        $logger = new Logger('main', [new StreamHandler('php://stdout')]);
 
         $application = new Application(
             handler: new BusinessLogic(),
-            middlewares: [],
+            middlewares: [
+                new Logging($logger),
+            ],
         );
         
         $request = new Request(uniqid());
         $response = $application->handle($request);
- 
+
         $this->view = new View($route);
         $this->model = $this->loadModel($route['controller']);
     }
@@ -46,10 +47,6 @@ abstract class Controller
         } else return $this->model;
     }
 
-    public function includeMiddleware(): void 
-    {
-
-    }
 }
     
 
