@@ -8,6 +8,7 @@ use app\core\middleware\src\Request;
 use app\core\middleware\src\Application;
 use app\core\middleware\src\BusinessLogic;
 use app\core\AccessControlList as ACL;
+use Monolog\Logger;
 
 abstract class Controller 
 {
@@ -19,13 +20,15 @@ abstract class Controller
     public function __construct($route)
     {
         $this->route = $route;
-        $acl = new ACL($route);
-        if (!$acl->checkAcl()){
-            View::errorCode(403);
-        }
+        // $acl = new ACL($route);
+        // if (!$acl->checkAcl()){
+        //     View::errorCode(403);
+        // }
+
 
         $application = new Application(
             handler: new BusinessLogic(),
+            middlewares: [],
         );
         
         $request = new Request(uniqid());
@@ -43,6 +46,10 @@ abstract class Controller
         } else return $this->model;
     }
 
+    public function includeMiddleware(): void 
+    {
+
+    }
 }
     
 

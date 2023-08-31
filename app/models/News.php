@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use app\Core\Model;
+use app\core\Model;
 
 class News extends Model 
 {
