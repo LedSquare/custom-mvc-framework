@@ -7,7 +7,7 @@ use app\core\middleware\src\{Response, Request, Handler};
 final class Pipeline 
 {
     /**
-     * @param List<Middleware> $middlewares
+     * @param list<Middleware> $middlewares
      */
     public function __construct(
         private readonly Handler $handler,
@@ -23,7 +23,7 @@ final class Pipeline
      */
     public function handle(Request $request): Response
     {
-        $middleware = array_shift($middlewares);
+        $middleware = array_shift($this->middlewares);
 
         if ($middleware == !null){
             return $middleware->handle($request, [$this, 'handle']);
