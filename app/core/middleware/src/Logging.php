@@ -14,14 +14,14 @@ final class Logging implements Middleware
 
     public function handle(Request $request, callable $next): Response
     {
-        $this->logger->info('Request', [
+        $this->logger->info('Request.', [
             'request_id' => $request->requestId,
             'request' => $request,
         ]);
 
         $response = $next($request);
 
-        $this->logger->info('Request', [
+        $this->logger->info('Application responded.', [
             'request_id' => $request->requestId,
             'response' => $response,
         ]);
