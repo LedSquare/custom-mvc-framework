@@ -4,10 +4,16 @@ namespace App\Core;
 
 
 use app\core\View;
-use app\core\middleware\src\{Request, Application, BusinessLogic, Logging};
+use app\core\middleware\src\{
+    Request, 
+    Application, 
+    BusinessLogic, 
+    Logging, 
+    Validation
+};
 use app\core\AccessControlList as ACL;
-use vendor\monolog\monolog\src\Monolog\Handler\StreamHandler;
-use vendor\monolog\monolog\src\Monolog\Logger;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 abstract class Controller 
 {
@@ -23,30 +29,36 @@ abstract class Controller
         // if (!$acl->checkAcl()){
         //     View::errorCode(403);
         // }
-        $logger = new Logger('main', [new StreamHandler('php://stdout')]);
 
-        $application = new Application(
-            handler: new BusinessLogic(),
-            middlewares: [
-                new Logging($logger),
-            ],
-        );
-        
-        $request = new Request(uniqid());
-        $response = $application->handle($request);
-
+        $this->includeMiddleware();
         $this->view = new View($route);
         $this->model = $this->loadModel($route['controller']);
     }
 
-    public function loadModel($name): ?object
+    private function loadModel($name): ?object
     {
         $path = 'app\models\\' . ucfirst($name); 
         if (class_exists($path)) {
             return new $path;
         } else return $this->model;
     }
+    
+    private function includeMiddleware(): void 
+    {
+        $logger = new Logger('main', [new StreamHandler('php://stdout')]);
 
+        $application = new Application(
+            handler: new BusinessLogic(),
+            middlewares: [
+                new Logging($logger),
+                new Validation(),
+            ],
+        );
+        
+        $request = new Request(uniqid(), '');
+        $response = $application->handle($request);
+        debug($response);
+    }
 }
     
 

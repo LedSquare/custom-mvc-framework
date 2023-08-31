@@ -2,7 +2,8 @@
 
 namespace App\Core\Middleware\Src;
 
-enum Status
+enum Status: string
 {
-    case OK;
+    case OK = 'OK';
+    case BAD_REQUEST = 'BAD REQUEST';
 }
