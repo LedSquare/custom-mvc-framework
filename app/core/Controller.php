@@ -30,7 +30,7 @@ abstract class Controller
         //     View::errorCode(403);
         // }
 
-        $this->includeMiddleware();
+        // $this->includeMiddleware();
         $this->view = new View($route);
         $this->model = $this->loadModel($route['controller']);
     }

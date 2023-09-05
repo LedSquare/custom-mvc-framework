@@ -1,10 +1,10 @@
 <?php
 
 // declare(strict_types=1);
-// require __DIR__ . '/../app/lib/Dev.php';
-// require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ .'/app/lib/Dev.php';
-require __DIR__ .'/vendor/autoload.php';
+require __DIR__ . '/../app/lib/Dev.php';
+require __DIR__ . '/../vendor/autoload.php';
+// require __DIR__ .'/app/lib/Dev.php';
+// require __DIR__ .'/vendor/autoload.php';
 
 use app\core\Router;
 
@@ -15,8 +15,7 @@ spl_autoload_register(function($class){
         require $path;
    }
 });
-echo 'OPA';
-die;
+
 $router = new Router;
 
 $router->run();

@@ -8,7 +8,7 @@ class DB
 {
     private static $instance = null;
 
-    private $connection;
+    private ?object $connection = null;
 
     private string $host;
 
@@ -20,8 +20,6 @@ class DB
 
     private array $config;
 
-    protected PDO $db;
-
     public function __construct()
     {
         $this->config = parse_ini_file(".env");
@@ -31,17 +29,37 @@ class DB
         $this->password = $this->config['DB_PASSWORD'];
         $this->name = $this->config['DB_DATABASE'];
 
-        $this->db = new PDO(
-            'mysql:host=' . $this->host .
-            ';dbname=' . $this->name ,
-            $this->user,
-            $this->password
-        );
+        
+        try {
+            $this->connection = new PDO(
+                'mysql:host=' . $this->host . ';dbname=' . $this->name, $this->user, $this->password
+            );
+
+        } catch (\Exception $e) {
+            echo 'Error: ', $e->getMessage(), "\n", "<hr>";
+            die;
+        }
+
     }
+
+    public static function getInstance(): self
+    {
+        if (!self::$instance){
+            self::$instance = new DB;
+        }
+
+        return self::$instance;
+    }
+
+    public function getConnection(): object
+    {
+        return $this->connection;
+    }
+
 
     public function query($sql, $params = []): mixed
     {
-        $stmt = $this->db->prepare($sql);
+        $stmt = $this->connection->prepare($sql);
         if (!empty($stmt)){
             foreach ($params as $key => $val) {
                 $stmt->bindValue(':' . $key, $val);
