@@ -6,16 +6,36 @@ use PDO;
 
 class Db
 {
+    private static $instance = null;
+
+    private $connection;
+
+    private string $host;
+
+    private string $user;
+
+    private string $password;
+
+    private string $name;
+
+    private array $config;
+
     protected PDO $db;
 
     public function __construct()
     {
-        $config = require 'app/config/db.php';
+        $this->config = parse_ini_file(".env");
+
+        $this->host = $this->config['DB_HOST'];
+        $this->user = $this->config['DB_USERNAME'];
+        $this->password = $this->config['DB_PASSWORD'];
+        $this->name = $this->config['DB_DATABASE'];
+
         $this->db = new PDO(
-            'mysql:host=' . $config['host'] .
-            ';dbname=' . $config['name'],
-            $config['user'],
-            $config['password']
+            'mysql:host=' . $this->host .
+            ';dbname=' . $this->name ,
+            $this->user,
+            $this->password
         );
     }
 
