@@ -4,7 +4,7 @@ namespace App\Lib;
 
 use PDO;
 
-class Db
+class DB
 {
     private static $instance = null;
 
