@@ -15,8 +15,7 @@ spl_autoload_register(function($class){
         require $path;
    }
 });
-echo 'OPA';
-die;
+echo 'root';
 $router = new Router;
 
 $router->run();

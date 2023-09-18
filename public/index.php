@@ -15,7 +15,7 @@ spl_autoload_register(function($class){
         require $path;
    }
 });
-
+echo 'public';
 $router = new Router;
 
 $router->run();
