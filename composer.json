@@ -1,4 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {
+            "App\\":"app"
+        }
+    },
     "authors": [
         {
             "name": "Artyom"
@@ -7,10 +12,6 @@
     "require": {
         "psr/log": "^3.0",
         "monolog/monolog": "^3.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "":"src/"
-        }
     }
+
 }
