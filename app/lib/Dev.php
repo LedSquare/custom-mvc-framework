@@ -10,6 +10,13 @@ function debug($str)
     echo '<pre>';
     var_dump($str);
     echo '</pre>';
+}
+
+function ddExit($str)
+{
+    echo '<pre>';
+    var_dump($str);
+    echo '</pre>';
     exit;
 }
 

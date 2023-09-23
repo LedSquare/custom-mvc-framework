@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App;
 
-use App\Core\Route\{Route, RouteConfiguration, RouteDispatcher};
+use App\Core\Route\{Route, RouteDispatcher};
 
 class App 
 {

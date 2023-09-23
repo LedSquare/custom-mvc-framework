@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Core\Route;
-
+ 
 class RouteConfiguration
 {
     public string $route;
