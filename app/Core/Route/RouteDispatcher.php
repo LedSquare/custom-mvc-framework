@@ -96,8 +96,10 @@ class RouteDispatcher
         $ClassName = $this->routeConfiguration->controller;
         $action = $this->routeConfiguration->action;
 
-        $Class = new $ClassName();
-        $Class->$action(...$this->paramRequestMap);
+        print((new $ClassName)->$action(...$this->paramRequestMap));
+
+        // $class = new $ClassName();
+        // $class->$action(...$this->paramRequestMap);
         die;
     }
 }

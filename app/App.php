@@ -8,12 +8,12 @@ class App
 {
     public static function run()
     {
+        // debug($_SERVER['DOCUMENT_ROOT']);
+
         foreach (Route::getRoutesGet() as $routeConfiguration) {
 
             $routeDispatcher = new RouteDispatcher($routeConfiguration);
             $routeDispatcher->process();
         }
-        echo'<br>';
-        echo 'App is running!';
     }
 }

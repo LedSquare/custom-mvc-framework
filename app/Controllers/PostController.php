@@ -3,16 +3,17 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\View\View;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(): string
     {
-        echo 'index';
-    }
+        return View::view('post.index');
+    }   
 
-    public function show($post, $wost)
+    public function show(string $post): string
     {
-        echo $post;
+        return View::view('post.show', compact('post'));
     }
 }

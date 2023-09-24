@@ -1,24 +1,10 @@
 <?php
 
-// declare(strict_types=1);
+declare(strict_types=1);
+
+use App\App;
 require __DIR__ . '/../app/lib/Dev.php';
 require __DIR__ . '/../vendor/autoload.php';
-// require __DIR__ .'/app/lib/Dev.php';
-// require __DIR__ .'/vendor/autoload.php';
+require __DIR__ . '/../app/routes/web.php';
 
-use app\core\Router;
-
-spl_autoload_register(function($class){
-   $path = str_replace('\\', DIRECTORY_SEPARATOR, $class . '.php');
-
-   if (file_exists($path)){
-        require $path;
-   }
-});
-echo 'public';
-$router = new Router;
-
-$router->run();
-
-// require __DIR__ . '/../vendor/autoload.php';
-// require __DIR__ . '/../app/lib/Dev.php';
+App::run();

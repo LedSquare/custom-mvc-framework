@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huitaitl</title>
+    <title>Document</title>
 </head>
 <body>
-    <?php echo $content; ?>
-
-    <script src="/public/scripts/jquery.js"></script>
-    <script src="/public/scripts/ajaxForm.js"></script>
+    <h1>This is index method in PostController.php</h1>
 </body>
 </html>
