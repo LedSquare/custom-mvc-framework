@@ -8,6 +8,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        
+        echo 'index';
+    }
+
+    public function show($post, $wost)
+    {
+        echo $post;
     }
 }

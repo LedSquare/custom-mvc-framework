@@ -13,7 +13,7 @@ class App
             $routeDispatcher = new RouteDispatcher($routeConfiguration);
             $routeDispatcher->process();
         }
-
+        echo'<br>';
         echo 'App is running!';
     }
 }

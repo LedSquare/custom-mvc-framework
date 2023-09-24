@@ -12,7 +12,7 @@ function debug($str)
     echo '</pre>';
 }
 
-function ddExit($str)
+function debuged($str)
 {
     echo '<pre>';
     var_dump($str);

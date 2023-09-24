@@ -6,8 +6,10 @@ use App\Core\Route\RouteConfiguration;
 
 class RouteDispatcher 
 {
-    private string $requestUri = '/';
     private array $parameterMap = [];
+    private array $paramRequestMap = [];
+
+    private string $requestUri = '/';
     private RouteConfiguration $routeConfiguration;
 
     public function __construct(RouteConfiguration $routeConfiguration)
@@ -15,11 +17,15 @@ class RouteDispatcher
         $this->routeConfiguration = $routeConfiguration;
     }
 
-    public function process()
+    public function process(): void
     {
         $this->saveRequestUri();
 
         $this->setParameterMap();
+
+        $this->makeRegexRequest();
+
+        $this->match();
 
 
     }    
@@ -43,19 +49,55 @@ class RouteDispatcher
     }
 
 
-    private function setParameterMap()
+    private function setParameterMap(): void
     {
         $routeArray = explode('/', $this->routeConfiguration->route); 
         
         foreach ($routeArray as $paramKey => $param) {
             if (preg_match('/{.*}/', $param)){
 
-                $this->parameterMap[$paramKey] = preg_replace('/(^{)|( }$)/', '', $param);
+                $this->parameterMap[$paramKey] = preg_replace('/(^{)|(}$)/', '', $param);
 
             }
         }
+    }
 
-        // debug($this->requestUri); 
-        // debug($this->parameterMap); 
+    private function makeRegexRequest(): void
+    {
+        $requestUriArray = explode('/', $this->requestUri);
+
+        foreach ($this->parameterMap as $paramKey => $param) {
+            if (!isset($requestUriArray[$paramKey])){
+                return;
+            }
+
+            $this->paramRequestMap[$param] = $requestUriArray[$paramKey];
+            $requestUriArray[$paramKey] = '{.*}';
+
+        }
+        $this->requestUri = implode('/', $requestUriArray);
+        $this->prepareRegex();
+    }   
+
+    private function prepareRegex(): void
+    {
+        $this->requestUri = str_replace('/', '\/', $this->requestUri);
+    }
+
+    private function match(): void
+    {
+        if (preg_match("/$this->requestUri/", $this->routeConfiguration->route)) {
+            $this->runClass();
+        } 
+    }
+
+    private function runClass(): void
+    {
+        $ClassName = $this->routeConfiguration->controller;
+        $action = $this->routeConfiguration->action;
+
+        $Class = new $ClassName();
+        $Class->$action(...$this->paramRequestMap);
+        die;
     }
 }
