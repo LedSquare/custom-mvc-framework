@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Core\Controller;
+use App\Core\Controller\Controller;
 use App\Core\View\View;
 
 class PostController extends Controller
