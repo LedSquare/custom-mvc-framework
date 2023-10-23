@@ -2,7 +2,8 @@
 
 namespace App\Core\Route;
 
-use App\Core\Route\RouteConfiguration;
+// use App\Core\Route\RouteConfiguration;
+use App\Core\Route\RouteConfigurationFactory;
 
 class Route 
 {
@@ -11,21 +12,19 @@ class Route
 
     public static function get(string $route, array $controller): RouteConfiguration
     {   
-        $routeConfiguration = new RouteConfiguration($route, $controller[0], $controller[1]);
+        $routeConfiguration = RouteConfigurationFactory::create($route, $controller[0], $controller[1]);
         self::$routesGet[] = $routeConfiguration;
-
         return $routeConfiguration;
     }
 
 
     public static function post(string $route, array $controller): RouteConfiguration
     {   
-        $routeConfiguration = new RouteConfiguration($route, $controller[0], $controller[1]);
+        $routeConfiguration = RouteConfigurationFactory::create($route, $controller[0], $controller[1]);
         self::$routesPost[] = $routeConfiguration;
-
         return $routeConfiguration;
     }
-
+    
     /**
      * Get the value of routesGet
      */ 

@@ -8,6 +8,9 @@ class RouteConfiguration
     public string $controller;
     public string $action;
     private string $name;
+    /**
+     * TODO: Middleware
+     */
     private string $middleware;
 
     public function __construct(string $route, string $controller, string $action)

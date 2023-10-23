@@ -8,7 +8,7 @@ class App
 {
     public static function run()
     {
-        // debug($_SERVER['DOCUMENT_ROOT']);
+        debug($_SERVER['DOCUMENT_ROOT']);
 
         foreach (Route::getRoutesGet() as $routeConfiguration) {
 
